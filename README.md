@@ -14,9 +14,9 @@ Execute the following commands to clone this example and setup your API credenti
 git clone <<URL>>
 cd <<URL>>
 npm install
-echo "apiKey.id = YOUR_API_KEY" > ~/.stormpath/apiKey.properties
-echo "apiKey.secret = YOUR_API_SECRET" >> ~/.stormpath/apiKey.properties
-export SP_APP_HREF="https://api.stormpath.com/v1/applications/YOUR_APP_ID"
+export STORMPATH_API_KEY_ID="YOUR_API_KEY_ID"
+export STORMPATH_API_KEY_SECRET="YOUR_API_KEY_SECRET"
+export STORMPATH_APP_HREF="https://api.stormpath.com/v1/applications/YOUR_APP_ID"
 npm run start
 ```
 
@@ -30,22 +30,21 @@ Then visit http://localhost:3000/
 
 ### lib/stormpath.js
 
-This file is the "glue" between your Stormpath SDK client, the Stormpath passport strategy, and the global passport state.  You can copy this file from our example or implement it yourself.  Here is what our version is doing:
+This file contains the boilerplate that you need in order to hook up the stormpath strategy with a passport instance.  You can copy this file from our example or implement it yourself.  It does these things:
 
-* Requiring the Stormpath node SDK
+* Accepts a passport instance
 
-* Setting up a Stormpath client, using your API key and Application Href.
- * Our example will read your API key from your home directory, and the app href from ENV - you can change this if needed
+* Creates a Stormpath client that is tied to a Stormpath app, by grabbing your API & App info from the environemt (if you want to use files, see [here](http://docs.stormpath.com/nodejs/api/apiKey))
 
-* Initializing an instance of the `passport-stormpath` strategy, and telling passport to use it via `passport.use()`
+* Creates the strategy instance and passes it to `passport.use()`
 
-* Telling passport how to serialize/deserialze the Stormpath user data
+* Defines the `serializeUser` and `deserializeUser` handler functions for the passport instance
 
 ---
 
 ### app.js
 
-At the top of our app.js, we require passport.  Then we pass it into the stormpath initialization function:
+At the top of our app.js we require passport, which returns a passport instance.  We pass that passport instance to the stormpath lib file:
 
 ```
 var passport = require('passport');
@@ -70,20 +69,20 @@ app.use(app.router);
 
 Here we are:
 
-* Telling express to use it's session middleware, this will set a cookie on the client so that we can remain logged in once we submit valid credentials
+* Telling Express to use it's session middleware, this will set a cookie on the client so that the user can remain logged in.
 
-* Telling express to initialize passport and hook up the session middleware with passport
+* Telling Express to initialize passport and hook up the session middleware with passport
 
-* Setting up a custom middleware which will assign `user` to the local variables for all views, so that we can reference in all our templates - yay!
+* Defining a custom middleware which will assign `user` to the local variables for all views, so that we can reference `user` in our views
 
 * **NOTE:** The ordering of these `app.use` statements is important, specifically:
  * `cookieParser` needs to come before `express.session`
 
  * our custom middleware shoud come before `express.static` and `app.router`
 
-Please see the Express docs for more info, or reach our for help!
+---
 
-We want to render a login page at `/login` by rendering our login view:
+We show a login page at `/login` by rendering our login view:
 
 ```javascript
 app.get('/login', function(req,res){
@@ -92,7 +91,7 @@ app.get('/login', function(req,res){
 ```
 ---
 
-We setup a POST handler for the login page to post to:
+We define a handler for the login page to POST to:
 
 ```javascript
 app.post('/login', function(req, res, next) {
@@ -121,13 +120,13 @@ It handles the following cases:
 
 * If a major error (e.g. network error) then pass on the error, to eventually be rendered by Express
 
-* If user is false then there was as problem with the username or password, re-render the login page and pass that info to the view
+* If user is false then there was as problem with the username or password, re-render the login page and pass the error info to the view
 
-* Otherwise, login and redirect to the home page if no other errors
+* Otherwise, call `req.logIn` to set the user on the seeion and redirect to the home page
 
 ---
 
-We also provide a logout route, this uses `req.logout()` from express:
+We define a logout route, using `req.logout()` to clear the user from the session:
 
 ```javascript
 app.get('/logout', function(req,res){
