@@ -2,4 +2,24 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  
+  if user
+    h3 You are logged in as:
+    table(border="1" cellpadding="10")
+        tr
+            td Usernme
+            td #{user.username}
+        tr
+            td Email
+            td #{user.email}
+        tr
+            td href
+            td #{user.href}
+        tr
+            td Status
+            td #{user.status}
+  else
+    p Not logged in, 
+        a(href="/login") click here to login
+        span .
+
