@@ -11,8 +11,8 @@ It was scaffoled with the `express-generator` node module
 Execute the following commands to clone this example and setup your API credentials and App ID:
 
 ```
-git clone <<URL>>
-cd <<URL>>
+git clone https://github.com/stormpath/passport-stormpath-example.git
+cd passport-stormpath-example
 npm install
 export STORMPATH_API_KEY_ID="YOUR_API_KEY_ID"
 export STORMPATH_API_KEY_SECRET="YOUR_API_KEY_SECRET"
