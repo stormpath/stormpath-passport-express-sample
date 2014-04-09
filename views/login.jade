@@ -1,8 +1,13 @@
-form(method="POST")
-    p
-        input(name="username",placeholder="Username",value=username || "")
-    p
-        input(name="password",placeholder="Password")
-    button Login
-if error
-    p #{error.message}
+extends layout
+
+block content
+    h1 Login
+
+    form(method="POST")
+        p
+            input(name="username",placeholder="Username",value=username || "")
+        p
+            input(type="password",name="password",placeholder="Password")
+        button Login
+    if error
+        p #{error.message}
