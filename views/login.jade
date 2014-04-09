@@ -1,6 +1,8 @@
 form(method="POST")
     p
-        input(name="username",placeholder="Username")
+        input(name="username",placeholder="Username",value=username || "")
     p
         input(name="password",placeholder="Password")
     button Login
+if error
+    p #{error.message}

@@ -40,13 +40,27 @@ app.get('/users', users.list);
 app.get('/login', function(req,res){
     res.render('login');
 });
-app.post('/login',
-    passport.authenticate( 'stormpath', { failureRedirect: '/login', failureFlash: false }),
-    function(req,res){
-        // called after successful login
-        res.redirect('/');
-    }
-);
+
+app.post('/login', function(req, res, next) {
+    passport.authenticate('stormpath', function(err, user, info) {
+        if (err) {
+            return next(err);
+        }
+        if (!user && info) {
+            return res.render('login',{
+                error:info,
+                username: req.body.username
+            });
+        }
+        req.logIn(user, function(err) {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect('/');
+        });
+    })(req, res, next);
+});
+
 app.get('/logout', function(req,res){
     req.logout();
     res.redirect('/');

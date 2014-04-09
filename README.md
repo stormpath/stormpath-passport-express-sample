@@ -2,7 +2,7 @@
 
 This example will show you how to use the Stormpth Passport Strategy with Express
 
-This express will will render a home page with user details, if logged in.  Otherwise it will prompt you to login.
+This app will will render a home page with user details, if logged in.  Otherwise it will prompt you to login.
 
 It was scaffoled with the `express-generator` node module
 
@@ -19,6 +19,7 @@ echo "apiKey.secret = YOUR_API_SECRET" >> ~/.stormpath/apiKey.properties
 export SP_APP_HREF="https://api.stormpath.com/v1/applications/YOUR_APP_ID"
 npm run start
 ```
+
 
 Then visit http://localhost:3000/
 
@@ -40,6 +41,7 @@ This file is the "glue" between your Stormpath SDK client, the Stormpath passpor
 
 * Telling passport how to serialize/deserialze the Stormpath user data
 
+---
 
 ### app.js
 
@@ -53,7 +55,7 @@ require('./lib/stormpath')(passport);
 
 Next we configure the necessary middleware in Express:
 
-```
+```javascript
 app.use(cookieParser());
 app.use(express.session({ secret:  process.env.EXPRESS_SECRET || "//TODO" }));
 app.use(passport.initialize());
@@ -83,29 +85,65 @@ Please see the Express docs for more info, or reach our for help!
 
 We want to render a login page at `/login` by rendering our login view:
 
-```
+```javascript
 app.get('/login', function(req,res){
     res.render('login');
 });
 ```
+---
 
-We need to tell passport where it should accept the POST from the login form, and what should happen after a successful login:
+We setup a POST handler for the login page to post to:
+
+```javascript
+app.post('/login', function(req, res, next) {
+    passport.authenticate('stormpath', function(err, user, info) {
+        if (err) {
+            return next(err);
+        }
+        if (!user && info) {
+            return res.render('login',{
+                error:info,
+                username: req.body.username
+            });
+        }
+        req.logIn(user, function(err) {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect('/');
+        });
+    })(req, res, next);
+});
 
 ```
-app.post('/login',
-    passport.authenticate( 'stormpath', { failureRedirect: '/login', failureFlash: false }),
-    function(req,res){
-        // called after successful login
-        res.redirect('/');
-    }
-);
-```
+
+It handles the following cases:
+
+* If a major error (e.g. network error) then pass on the error, to eventually be rendered by Express
+
+* If user is false then there was as problem with the username or password, re-render the login page and pass that info to the view
+
+* Otherwise, login and redirect to the home page if no other errors
+
+---
 
 We also provide a logout route, this uses `req.logout()` from express:
 
-```
+```javascript
 app.get('/logout', function(req,res){
     req.logout();
     res.redirect('/');
 });
 ```
+
+## Need more help?
+
+* Passport Guide: http://passportjs.org/guide/
+
+* Express Guide: http://expressjs.com/guide.html
+
+* Stormpath Node SDK Docs: http://docs.stormpath.com/nodejs/api/home
+
+* Stormpath API Docs: http://docs.stormpath.com/rest/product-guide/
+
+* Stormpath Support: https://support.stormpath.com/home
