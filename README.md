@@ -1,14 +1,14 @@
 ## Stormpath Passport Strategy Example
 
-This example will show you how to use the Stormpth Passport Strategy with Express
+This example will show you how to use the Stormpath Passport Strategy with Express
 
 This app will will render a home page with user details, if logged in.  Otherwise it will prompt you to login.
 
 It assumes that you have already created an application in Stormpath and created some user accounts that you can use for login testing.
 
-It was scaffoled with the `express-generator` node module
+It was scaffolded with the `express-generator` node module
 
-## To run this examaple
+## To run this example
 
 Run the following commands to clone this example and setup your API credentials and App ID:
 
@@ -36,7 +36,7 @@ This file contains the boilerplate that you need in order to hook up the stormpa
 
 * Accepts a passport instance
 
-* Creates a Stormpath client that is tied to a Stormpath app, by grabbing your API & App info from the environemt (if you want to use files, see [here](http://docs.stormpath.com/nodejs/api/apiKey))
+* Creates a Stormpath client that is tied to a Stormpath app, by grabbing your API & App info from the environment (if you want to use files, see [here](http://docs.stormpath.com/nodejs/api/apiKey))
 
 * Creates the strategy instance and passes it to `passport.use()`
 
@@ -80,7 +80,7 @@ Here we are:
 * **NOTE:** The ordering of these `app.use` statements is important, specifically:
  * `cookieParser` needs to come before `express.session`
 
- * our custom middleware shoud come before `express.static` and `app.router`
+ * The custom middleware should come before `express.static` and `app.router`
 
 ---
 
@@ -124,7 +124,7 @@ It handles the following cases:
 
 * If user is false then there was as problem with the username or password, re-render the login page and pass the error info to the view
 
-* Otherwise, call `req.logIn` to set the user on the seeion and redirect to the home page
+* Otherwise, call `req.logIn` to set the user on the session and redirect to the home page
 
 ---
 
