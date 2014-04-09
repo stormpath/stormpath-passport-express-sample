@@ -4,11 +4,13 @@ This example will show you how to use the Stormpth Passport Strategy with Expres
 
 This app will will render a home page with user details, if logged in.  Otherwise it will prompt you to login.
 
+It assumes that you have already created an application in Stormpath and created some user accounts that you can use for login testing.
+
 It was scaffoled with the `express-generator` node module
 
 ## To run this examaple
 
-Execute the following commands to clone this example and setup your API credentials and App ID:
+Run the following commands to clone this example and setup your API credentials and App ID:
 
 ```
 git clone https://github.com/stormpath/passport-stormpath-example.git
@@ -21,7 +23,7 @@ npm run start
 ```
 
 
-Then visit http://localhost:3000/
+Then visit [ http://localhost:3000/ ](http://localhost:3000/)
 
 
 
