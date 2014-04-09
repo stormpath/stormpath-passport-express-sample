@@ -76,12 +76,12 @@ Here we are:
 
 * **NOTE:** The ordering of these `app.use` statements is important, specifically:
  * `cookieParser` needs to come before `express.session`
- 
+
  * our custom middleware shoud come before `express.static` and `app.router`
 
 Please see the Express docs for more info, or reach our for help!
 
-We want to render a login page at `/login`, this is straightfoward Express convention:
+We want to render a login page at `/login` by rendering our login view:
 
 ```
 app.get('/login', function(req,res){
@@ -99,4 +99,13 @@ app.post('/login',
         res.redirect('/');
     }
 );
+```
+
+We also provide a logout route, this uses `req.logout()` from express:
+
+```
+app.get('/logout', function(req,res){
+    req.logout();
+    res.redirect('/');
+});
 ```
