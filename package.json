@@ -2,7 +2,8 @@
   "name": "passport-stormpath-example",
   "version": "0.0.0",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "debug": "node-debug ./bin/www"
   },
   "keywords": [
     "stormpath",
