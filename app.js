@@ -5,15 +5,43 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var stormpath = require('stormpath');
+var StormpathStrategy = require('passport-stormpath');
 
 var routes = require('./routes');
 var users = require('./routes/user');
 
 var app = express();
 
-var passport = require('passport');
+var spClient;
 
-require('./lib/stormpath')(passport);
+spClient = new stormpath.Client({
+    apiKey: new stormpath.ApiKey(
+        process.env['STORMPATH_API_KEY_ID'],
+        process.env['STORMPATH_API_KEY_SECRET']
+    )
+});
+
+spClient.getApplication(
+    process.env['STORMPATH_APP_HREF'],
+    function(err,app){
+        if(err){
+            throw err;
+        }
+        passport.use(new StormpathStrategy({spApp:app}));
+    }
+);
+
+passport.serializeUser(function(user, done) {
+    done(null, user.href);
+});
+
+passport.deserializeUser(function(userHref, done) {
+    spClient.getAccount(userHref,function(err,account){
+        done(err,account);
+    });
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
