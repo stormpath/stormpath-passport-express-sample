@@ -24,8 +24,9 @@ export STORMPATH_APP_HREF="https://api.stormpath.com/v1/applications/YOUR_APP_ID
 npm run start
 ```
 
-
 Then visit [ http://localhost:3000/ ](http://localhost:3000/) in your web browser.
+
+**Security tip**:  we recommend storing your API credintials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
 
 ### Contributing
 
