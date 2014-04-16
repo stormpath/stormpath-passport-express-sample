@@ -1,0 +1,31 @@
+extends layout
+
+block body
+
+  .login
+    .row
+      .col-lg-6.col-lg-offset-3
+        form.bs-example.form-horizontal(method='post', action='')
+          fieldset
+            legend Login
+            if error
+              .alert.alert-dismissable.alert-danger.login-fail
+                button.close(type='button', data-dismiss='alert') &times;
+                #{error}
+            p.last-p.
+              Once you enter your credentials and hit the Login button below,
+              your credentials will be securely sent to
+              <a href="https://stormpath.com">Stormpath</a> and verified.  If
+              your credentials are valid, you'll be logged in using a secure
+              session -- otherwise, you'll get a user friendly error message.
+            .form-group
+              label.col-lg-4.control-label(for='email') Email
+              .col-lg-4
+                input#email.form-control(type='email', name='email', placeholder='Email', autofocus)
+            .form-group
+              label.col-lg-4.control-label(for='password') Password
+              .col-lg-4
+                input#password.form-control(type='password', name='password', placeholder='Password')
+            .form-group
+              .col-lg-10.col-lg-offset-4
+                button.btn.btn-primary(type='submit') Login

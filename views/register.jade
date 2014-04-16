@@ -1,0 +1,48 @@
+extends layout
+
+block body
+
+  .register
+    .row
+      .col-lg-6.col-lg-offset-3
+        form.bs-example.form-horizontal(method='post', action='')
+          fieldset
+            legend Create a New Account
+            if error:
+              .alert.alert-dismissable.alert-danger.register-fail
+                button.close(data-dismiss='alert', type='button') &times;
+                #{error}
+            p.
+              Registering for this site will create a new user account for you
+              via <a href="https://stormpath.com">Stormpath</a>, then log you in
+              automatically.
+            .alert.alert-dismissable.alert-info
+              button.close(data-dismiss='alert', type='button') &times;
+              strong NOTE
+              Your password must be between 8 and 100 characters, and must
+              contain lowercase letters, uppercase letters, and numbers.
+            .form-group
+              label.col-lg-4.control-label(for='email') Email
+              .col-lg-4
+                input#email.form-control(name='email', type='email', placeholder='Email', autofocus)
+            .form-group
+              label.col-lg-4.control-label(for='password') Password
+              .col-lg-4
+                input#password.form-control(name='password', type='password', placeholder='Password')
+            .form-group
+              .col-lg-10.col-lg-offset-4
+                button.btn.btn-primary(type='submit') Register
+        h2 A Note About Stormpath Security
+        p.
+          In a real environment, you should <b>only deploy your application</b>
+          behind SSL / TLS to avoid having user credentials sent in plain text
+          over the network.
+        p.
+          Stormpath user creation is incredibly secure, is not susceptible to
+          any known vulnerabilities (MITM, hashing issues, replace attacks,
+          etc.), and provides you with a number of options to improve security
+          (including buil-in email verification, among other things).  We will
+          not verify your account by email now, but this can be easily enabled.
+        p.last-p.
+          Stormpath can also be configured to allow for weaker (or force
+          stronger) passwords, so it can fit into any application workflow.
