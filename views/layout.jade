@@ -1,7 +1,31 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='utf-8')
+    meta(content='IE=edge', http-equiv='X-UA-Compatible')
+    meta(content='width=device-width, initial-scale=1', name='viewport')
+    title= 'Express-Stormpath (sample) | ' + title
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/css/style.css', rel='stylesheet')
+    <!--[if lt IE 9 ]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
   body
-    block content
+    .container
+      .header
+        ul.nav.nav-pills.pull-right
+          li
+            a(href='/') Home
+          if user
+            li
+              a(href='/dashboard') Dashbaord
+            li
+              a(href='/logout') Logout
+          else
+            li
+              a(href='/login') Login
+        h3.text-muted Flask-Express
+      block body
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    script(src='/js/bootstrap.min.js')
