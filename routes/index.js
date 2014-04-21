@@ -72,6 +72,7 @@ router.get('/logout', function(req, res) {
 });
 
 
+// Authenticate a user.
 router.post(
   '/login',
   passport.authenticate(
