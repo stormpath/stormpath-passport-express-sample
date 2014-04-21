@@ -11,7 +11,8 @@ block body
             if error
               .alert.alert-dismissable.alert-danger.login-fail
                 button.close(type='button', data-dismiss='alert') &times;
-                #{error}
+                p.
+                  #{error}
             p.last-p.
               Once you enter your credentials and hit the Login button below,
               your credentials will be securely sent to
@@ -19,9 +20,9 @@ block body
               your credentials are valid, you'll be logged in using a secure
               session -- otherwise, you'll get a user friendly error message.
             .form-group
-              label.col-lg-4.control-label(for='email') Email
+              label.col-lg-4.control-label(for='username') Email
               .col-lg-4
-                input#email.form-control(type='email', name='email', placeholder='Email', autofocus)
+                input#username.form-control(type='email', name='username', placeholder='Email', autofocus)
             .form-group
               label.col-lg-4.control-label(for='password') Password
               .col-lg-4
