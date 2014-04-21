@@ -17,6 +17,7 @@
     "passport": "~0.2.0",
     "passport-stormpath": "~0.1.0",
     "express-session": "~1.0.3",
-    "connect-flash": "~0.1.1"
+    "connect-flash": "~0.1.1",
+    "stormpath": "~0.1.2"
   }
 }
