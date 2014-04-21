@@ -84,26 +84,6 @@ router.post(
   )
 );
 
-//router.post('/login', function(req, res, next) {
-//  passport.authenticate('stormpath', function(err, user, info) {
-//    if (err) {
-//      return next(err);
-//    }
-//    if (!user && info) {
-//      return res.render('login', {
-//        error: info,
-//        username: req.body.username,
-//      });
-//    }
-//    req.logIn(user, function(err) {
-//      if (err) {
-//        return next(err);
-//      }
-//      return res.redirect('/dashboard');
-//    });
-//  })(req, res, next);
-//});
-
 
 // Render the dashboard page.
 router.get('/dashboard', function (req, res) {
@@ -113,12 +93,7 @@ router.get('/dashboard', function (req, res) {
 
   res.render('dashboard', {
     title: 'Dashboard',
-    user: req.user, // {
-      //email: 'r@rdegges.com',
-      //custom_data: {
-      //  birthday: '06/28/1988',
-      //  color: 'black',
-      //}
+    user: req.user,
     }
   );
 });
