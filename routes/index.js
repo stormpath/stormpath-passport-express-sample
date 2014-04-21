@@ -5,7 +5,7 @@ var passport = require('passport');
 
 // Render the home page.
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Home' });
+  res.render('index', { title: 'Home', user: req.user });
 });
 
 
@@ -63,12 +63,12 @@ router.post(
 
 // Render the dashboard page.
 router.get('/dashboard', function (req, res) {
-  if (!req.user) {
+  if (!req.user || req.user.status !== 'ENABLED') {
     return res.redirect('/login');
   }
 
   res.render('dashboard', {
-    title: 'Express',
+    title: 'Dashboard',
     user: req.user, // {
       //email: 'r@rdegges.com',
       //custom_data: {
