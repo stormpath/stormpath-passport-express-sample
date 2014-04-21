@@ -17,7 +17,7 @@ router.get('/register', function(req, res) {
 
 // Render the login page.
 router.get('/login', function(req, res) {
-  res.render('login', { title: 'Login' });
+  res.render('login', { title: 'Login', error: req.flash('error')[0] });
 });
 
 
@@ -28,26 +28,37 @@ router.get('/logout', function(req, res) {
 });
 
 
-//router.post('/login', passport.authenticate('stormpath', {successRedirect: '/dashboard', failureRedirect: '/login'}));
-router.post('/login', function(req, res, next) {
-  passport.authenticate('stormpath', function(err, user, info) {
-    if (err) {
-      return next(err);
+router.post(
+  '/login',
+  passport.authenticate(
+    'stormpath',
+    {
+      successRedirect: '/dashboard',
+      failureRedirect: '/login',
+      failureFlash: 'Invalid email or password.',
     }
-    if (!user && info) {
-      return res.render('login', {
-        error: info,
-        username: req.body.username,
-      });
-    }
-    req.logIn(user, function(err) {
-      if (err) {
-        return next(err);
-      }
-      return res.redirect('/dashboard');
-    });
-  })(req, res, next);
-});
+  )
+);
+
+//router.post('/login', function(req, res, next) {
+//  passport.authenticate('stormpath', function(err, user, info) {
+//    if (err) {
+//      return next(err);
+//    }
+//    if (!user && info) {
+//      return res.render('login', {
+//        error: info,
+//        username: req.body.username,
+//      });
+//    }
+//    req.logIn(user, function(err) {
+//      if (err) {
+//        return next(err);
+//      }
+//      return res.redirect('/dashboard');
+//    });
+//  })(req, res, next);
+//});
 
 
 // Render the dashboard page.
