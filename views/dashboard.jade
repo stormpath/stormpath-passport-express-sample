@@ -11,53 +11,56 @@ block body
           br
           p Welcome to your user dashboard!
           p.
-            This page displays some of your user information using Flask
-            templates, and also allows you to change your user information.
+            This page displays some of your user information using Jade
+            templates.
           p.
             If you click the Logout link in the navbar at the top of this page,
             you'll be logged out of your account and redirected back to the main
             page of this site.
-          br
-          br
-          h2 Your Custom User Data
-          br
-          br
-          p Your Email: <span class="data">#{user.email}</span>
-          - var birthday = (user.custom_data.birthday ?  user.custom_data.birthday : "You haven't entered a birthday yet!");
-          - var color = (user.custom_data.color ?  user.custom_data.color : "You haven't entered a color yet!");
-          p Your Birthday: <span class="data">#{birthday}</span>
-          p Your Favorite Color: <span class="data">#{color}</span>
-          br
-          br
           p.
-            Stormpath allows you to store up to 10MB of custom user data on
-            each user account.  Data can be anything (in JSON format). The above
-            example shows two custom fields (<code>birthday</code> and
-            <code>color</code>), but you can add whatever fields you'd like.
-          p You can also store complicated nested JSON documents!
+            Your user account information is being securely stored using
+            passport sessions, and Stormpath as the authentication backend.
           br
           br
-          h2 Update Custom User Data
-          br
-          br
-          p.
-            If you enter values below, we'll securely send and store these
-            values with your user account on Stormpath.
-          p.
-            Please note, we are not doing any validation in this simple
-            example (other than stripping tags using Jinja) -- in a real world
-            scenario, you'd want to check user input on the server side!
-          br
-          br
-          form.bs-example.form-horizontal(method='post', action='')
-            .form-group
-              label.col-lg-2.control-label(for='birthday') Birthday
-              .col-lg-4
-                input#birthday.form-control(type='text', name='birthday', placeholder='mm/dd/yyyy')
-            .form-group
-              label.col-lg-2.control-label(for='color') Favorite Color
-              .col-lg-4
-                input#color.form-control(type='text', name='color', placeholder='color')
-            .form-group
-              .col-lg-10.col-lg-offset-2
-                button.btn.btn-primary(type='submit') Update Custom Data
+          //h2 Your Custom User Data
+          //br
+          //br
+          //p Your Email: <span class="data">#{user.email}</span>
+          //- var birthday = (user.custom_data.birthday ?  user.custom_data.birthday : "You haven't entered a birthday yet!");
+          //- var color = (user.custom_data.color ?  user.custom_data.color : "You haven't entered a color yet!");
+          //p Your Birthday: <span class="data">#{birthday}</span>
+          //p Your Favorite Color: <span class="data">#{color}</span>
+          //br
+          //br
+          //p.
+          //  Stormpath allows you to store up to 10MB of custom user data on
+          //  each user account.  Data can be anything (in JSON format). The above
+          //  example shows two custom fields (<code>birthday</code> and
+          //  <code>color</code>), but you can add whatever fields you'd like.
+          //p You can also store complicated nested JSON documents!
+          //br
+          //br
+          //h2 Update Custom User Data
+          //br
+          //br
+          //p.
+          //  If you enter values below, we'll securely send and store these
+          //  values with your user account on Stormpath.
+          //p.
+          //  Please note, we are not doing any validation in this simple
+          //  example (other than stripping tags using Jinja) -- in a real world
+          //  scenario, you'd want to check user input on the server side!
+          //br
+          //br
+          //form.bs-example.form-horizontal(method='post', action='')
+          //  .form-group
+          //    label.col-lg-2.control-label(for='birthday') Birthday
+          //    .col-lg-4
+          //      input#birthday.form-control(type='text', name='birthday', placeholder='mm/dd/yyyy')
+          //  .form-group
+          //    label.col-lg-2.control-label(for='color') Favorite Color
+          //    .col-lg-4
+          //      input#color.form-control(type='text', name='color', placeholder='color')
+          //  .form-group
+          //    .col-lg-10.col-lg-offset-2
+          //      button.btn.btn-primary(type='submit') Update Custom Data
