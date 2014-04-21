@@ -11,7 +11,8 @@ block body
             if error
               .alert.alert-dismissable.alert-danger.register-fail
                 button.close(data-dismiss='alert', type='button') &times;
-                #{error}
+                p.
+                  #{error}
             p.
               Registering for this site will create a new user account for you
               via <a href="https://stormpath.com">Stormpath</a>, then log you in

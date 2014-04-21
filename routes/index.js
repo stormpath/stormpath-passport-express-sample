@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 
 // Render the registration page.
 router.get('/register', function(req, res) {
-  res.render('register', { title: 'Register' });
+  res.render('register', { title: 'Register', error: req.flash('error')[0] });
 });
 
 
