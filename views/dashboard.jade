@@ -23,8 +23,10 @@ block body
           br
           br
           p Your Email: <span class="data">#{user.email}</span>
-          p Your Birthday: <span class="data">#{user.custom_data['birthday'] || "You haven't entered a birthday yet!"}</span>
-          p Your Favorite Color: <span class="data">#{user.custom_data['color'] or "You haven't entered a color yet!"}</span>
+          - var birthday = (user.custom_data.birthday ?  user.custom_data.birthday : "You haven't entered a birthday yet!");
+          - var color = (user.custom_data.color ?  user.custom_data.color : "You haven't entered a color yet!");
+          p Your Birthday: <span class="data">#{birthday}</span>
+          p Your Favorite Color: <span class="data">#{color}</span>
           br
           br
           p.
@@ -51,7 +53,7 @@ block body
             .form-group
               label.col-lg-2.control-label(for='birthday') Birthday
               .col-lg-4
-                input#birthday.form-control(type='text', name='birthday', placeholder='mm//dd/yyyy')
+                input#birthday.form-control(type='text', name='birthday', placeholder='mm/dd/yyyy')
             .form-group
               label.col-lg-2.control-label(for='color') Favorite Color
               .col-lg-4

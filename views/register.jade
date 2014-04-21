@@ -8,7 +8,7 @@ block body
         form.bs-example.form-horizontal(method='post', action='')
           fieldset
             legend Create a New Account
-            if error:
+            if error
               .alert.alert-dismissable.alert-danger.register-fail
                 button.close(data-dismiss='alert', type='button') &times;
                 #{error}
