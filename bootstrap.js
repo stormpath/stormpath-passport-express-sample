@@ -10,7 +10,7 @@ var readline = require('readline');
 var stormpath = require('stormpath');
 
 
-console.log('Hi, and welcome to the flask-stormpath-sample bootstrap app!\n');
+console.log('Hi, and welcome to the stormpath-express-sample bootstrap app!\n');
 console.log(
   "I'll help get you up and running in no time!  If you don't already have a\n" +
   "Stormpath account, please create one: https://api.stormpath.com/register\n"
