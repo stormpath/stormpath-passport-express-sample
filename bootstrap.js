@@ -57,9 +57,11 @@ function createVariables() {
   client.getApplications(function(err, apps) {
     if (err) throw err;
 
-    apps.each(function(err, app, offset) {
+    apps.each(function(app, next) {
       if (app.name === 'stormpath-express-sample') {
         write(app);
+      }else{
+        next();
       }
     });
 
