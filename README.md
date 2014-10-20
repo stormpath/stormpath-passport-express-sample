@@ -10,7 +10,7 @@ user authentication and authorization for your web app.
 To get started, you'll want to first clone this GitHub repository locally:
 
 ```bash
-$ git clone https://github.com/stormpath/stormpath-express-sample.git
+$ git clone https://github.com/stormpath/stormpath-passport-express-sample.git
 ```
 
 Next, you'll want to go into the sample app directory:
@@ -37,14 +37,14 @@ That's it!  Get suck?  Just email us anytime:
 Here are some various screenshots of the application (and bootstrap script!), so
 you can get an idea of what you're in for :)
 
-![Installing Requirements](https://github.com/stormpath/stormpath-express-sample/raw/master/assets/installing.png)
+![Installing Requirements](https://github.com/stormpath/stormpath-passport-express-sample/raw/master/assets/installing.png)
 
-![Boostrap Script](https://github.com/stormpath/stormpath-express-sample/raw/master/assets/bootstrap.png)
+![Boostrap Script](https://github.com/stormpath/stormpath-passport-express-sample/raw/master/assets/bootstrap.png)
 
-![Running](https://github.com/stormpath/stormpath-express-sample/raw/master/assets/running.png)
+![Running](https://github.com/stormpath/stormpath-passport-express-sample/raw/master/assets/running.png)
 
-![Index Page](https://github.com/stormpath/stormpath-express-sample/raw/master/assets/index-page.png)
+![Index Page](https://github.com/stormpath/stormpath-passport-express-sample/raw/master/assets/index-page.png)
 
-![Registration Page](https://github.com/stormpath/stormpath-express-sample/raw/master/assets/registration-page.png)
+![Registration Page](https://github.com/stormpath/stormpath-passport-express-sample/raw/master/assets/registration-page.png)
 
-![Dashboard Page](https://github.com/stormpath/stormpath-express-sample/raw/master/assets/dashboard-page.png)
+![Dashboard Page](https://github.com/stormpath/stormpath-passport-express-sample/raw/master/assets/dashboard-page.png)
