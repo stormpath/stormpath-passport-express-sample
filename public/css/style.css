@@ -38,3 +38,28 @@
   line-height: 1.33;
   border-radius: 0;
 }
+
+footer p {
+  margin: 0em;
+  padding: 0em;
+  text-align: right !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+  font-size: 13px !important;
+  color: #fff !important;
+}
+
+footer p span {
+  vertical-align: bottom !important;
+}
+
+footer p img {
+  align: top !important;
+  vertical-align: top !important;
+}
+
+footer p img.lock {
+  align: bottom !important;
+  vertical-align: middle !important;
+}
