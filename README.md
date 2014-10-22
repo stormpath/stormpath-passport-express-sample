@@ -1,6 +1,6 @@
 # stormpath-express-sample
 
-A sample Express application which demonstrates how to successfully use
+A sample Passport + Express application which demonstrates how to successfully use
 [passport-stormpath](https://github.com/stormpath/passport-stormpath) to handle
 user authentication and authorization for your web app.
 
@@ -16,7 +16,7 @@ $ git clone https://github.com/stormpath/stormpath-passport-express-sample.git
 Next, you'll want to go into the sample app directory:
 
 ```bash
-$ cd stormpath-express-sample
+$ cd stormpath-passport-express-sample
 ```
 
 Then you'll want to run `npm install` to download the dependencies and get
