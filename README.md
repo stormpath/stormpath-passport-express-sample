@@ -1,9 +1,21 @@
-# stormpath-express-sample
+# stormpath-passport-express-sample
 
 A sample Passport + Express application which demonstrates how to successfully use
 [passport-stormpath](https://github.com/stormpath/passport-stormpath) to handle
 user authentication and authorization for your web app.
 
+[Stormpath](http://stormpath.com/) is a User Management API that reduces development time for any application with scalable user infrastructure. 
+
+**NOTE**: If you're building an Express.js web application, you might want to
+use our [express-stormpath](https://docs.stormpath.com/nodejs/express/index.html)
+library instead -- it provides a simpler integration experience.
+
+## Links
++ [15-Minute Tutorial: Build a Webapp With Node.js, Express, Passport and Stormpath](https://stormpath.com/blog/build-app-nodejs-express-passport-stormpath/)
++ [passport-stormpath library](https://github.com/stormpath/passport-stormpath)
++ [passport-stormpath documentation](https://docs.stormpath.com/nodejs/passport/)
++ [Stormpath Node.js SDK](https://github.com/stormpath/stormpath-sdk-node)
++ [Stormpath website](http://stormpath.com/)
 
 ## Getting Started
 
