@@ -6,9 +6,17 @@ user authentication and authorization for your web app.
 
 [Stormpath](http://stormpath.com/) is a User Management API that reduces development time for any application with scalable user infrastructure. 
 
-**NOTE**: If you're building an Express.js web application, you might want to
-use our [express-stormpath](https://docs.stormpath.com/nodejs/express/index.html)
-library instead -- it provides a simpler integration experience.
+**NOTE**: Passport.js is purely for authentication (i.e. checking that someone's username and password is valid, or getting their identity from a social provider). It is not designed for handling user registrations, manage password resets, or implement email verification workflows, etc.  In turn, our Passport integration only automates authentication.  
+
+To automate more than just authentication, check out our express-stormpath library instead. It provides a full suite of user management features for your Express-based web application:
+
+* Create, register and authenticate users.
+* Store custom user data with each account.
+* Create and assign permissions (groups, roles, etc.).
+* Handle complex authentication and authorization patterns, like multi-tenancy.
+* Log users in via social login with Facebook and Google OAuth.
+* Cache user information for quick access.
+* Secure all your passwords.
 
 ## Links
 + [15-Minute Tutorial: Build a Webapp With Node.js, Express, Passport and Stormpath](https://stormpath.com/blog/build-app-nodejs-express-passport-stormpath/)
