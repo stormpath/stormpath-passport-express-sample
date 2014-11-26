@@ -8,7 +8,7 @@ user authentication and authorization for your web app.
 
 **NOTE**: Passport.js is purely for authentication (i.e. checking that someone's username and password is valid, or getting their identity from a social provider). It is not designed for handling user registrations, manage password resets, or implement email verification workflows, etc.  In turn, our Passport integration only automates authentication. If you need to do more, like password reset, you'll need to also use the [Stormpath Node SDK](https://docs.stormpath.com/nodejs/api/home).
 
-For a more seamless and automated experience, check out our [express-stormpath](https://docs.stormpath.com/nodejs/express/) library instead. It provides a full suite of user management features for your Express-based web application:
+For a more seamless and automated experience, check out our [express-stormpath](https://docs.stormpath.com/nodejs/express/) library instead of Passport.js. It provides a full suite of user management features for your Express-based web application:
 
 * Create, register and authenticate users.
 * Store custom user data with each account.
