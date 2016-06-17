@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "install": "node ./bootstrap.js",
     "start": "node ./bin/www"
   },
   "dependencies": {
